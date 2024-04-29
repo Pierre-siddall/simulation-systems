@@ -26,7 +26,8 @@ jobs:
       run: |
          pip install Sphinx==6.2.1
          pip install sphinx-design==0.5.0
-         pip install sphinx-rtd-theme==1.2.0
+         pip install pydata-sphinx-theme
+         pip install sphinx-sitemap
          
     - name: build docs
       run: |
