@@ -57,6 +57,9 @@ should go to the main code owner(s) for the area affected. If they don't want to
 then they may have suggestions for other suitable reviewers or you can approach
 anyone who would have good insight into the changes made.
 
+Changes that have a linked LFRic Core ticket should find a SciTech reviewer from
+the :ref:`CCD Team<simIT>`.
+
 The review process will iterate between the developer and reviewer until the
 changes made are agreed to be of sufficient quality. The SciTech reviewer will
 fill in a :ref:`SciTech Review Checklist <template>` which makes sure all
@@ -70,8 +73,8 @@ Guidance for the SciTech reviewer can be found :ref:`here <scitech_review>`.
 Code and System Review
 ----------------------
 Organising the code reviewer is the responsibility of the developer and is
-done by emailing the :ref:`ssd`. Reviewers are assigned to email requests a
-couple of times a week.
+done by emailing the :ref:`SSD Team <simIT>`. Reviewers are assigned to email #
+requests a couple of times a week.
 
 The code reviewer will check that the change meets the coding standards and fits
 with the overall system design. They will also fill in a :ref:`Code Review
@@ -82,13 +85,6 @@ and the developer with the ticket ownership passing between the two while keepin
 the status as Code Review. If major changes are needed then the ticket may be
 rejected which will put it back to `In Progress` and a further SciTech Review
 will be needed in this case.
-
-..
-    .. note::
-    For LFRic only developments you can also contact the :ref:`cap_dev_team`
-    directly or use the *request a code review* option on the ticket to
-    move your ticket into `ready_for_code_review` status. Once a week tickets
-    in this status are assigned a reviewer.
 
 Once the code reviewer is satisfied they will move the ticket into the `approved`
 state, ready for commit to the trunk.
