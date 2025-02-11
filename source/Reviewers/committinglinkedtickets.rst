@@ -1,4 +1,4 @@
-.. _committinglinkedtickets:
+q.. _committinglinkedtickets:
 
 Committing Linked Tickets
 =========================
@@ -109,6 +109,9 @@ Once you are happy with all your testing then the commit sequence is as follows:
   .. code-block:: RST
 
       HOST_SOURCE_JULES='fcm:jules.xm_tr@12345'
+
+  .. note::
+    UM_AUX revision number should be updated under both ```HOST_SOURCE_UM_AUX``` and ```SOURCE_UM_AUX_REV```
 
 3. Commit UM
 

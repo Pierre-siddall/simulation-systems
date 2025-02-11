@@ -12,7 +12,7 @@ The process for committing a ticket follows this sequence with details for each 
     Before You Start:
       * Is anyone else committing?
 
-        * `Trunk Status`_ is used to coordinate trunk commits all projects.
+        * `Trunk Status`_ is used to coordinate trunk commits for all projects.
         * Simple, not conflicting commits can be done in parallel if reviewers all agree.
         * Changes with KGO or Macros usually require sole access to the trunk.
       * Check how many commits have happened today. Suggested limit per day, per repository is 4.
@@ -326,9 +326,9 @@ are no clashes with what else has gone on trunk.
 **If** your change is known to alter answers, you need to update rose-stem KGO
 for all affected tests before you commit to the trunk.
 
-Supporting data is stored in the filesystems of our machines and changes to use will require the reviewer to update those files (BIG DATA).
+Supporting data is stored in the filesystems of our machines and changes to use will require the reviewer to update those files.
 
-*NB: These instructions are Met Office specific, other sites may manage their KGO differently*
+*NB: These instructions are Met Office specific, other sites may manage their KGO and supporting data differently*
 
 .. dropdown:: Setup for first KGO install (UM + LFRic Inputs)
 
@@ -520,19 +520,20 @@ Supporting data is stored in the filesystems of our machines and changes to use 
     failed for other reasons (e.g. timeout) then these should be re-triggered
     before attempting to install the KGO files.
 
-4.1 Managing BIG DATA
-^^^^^^^^^^^^^^^^^^^^^^
+4.1 Managing Supporting Data
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Static input data, such as initialisations and ancilliaries, are required by many tests.
 
 .. tab-set::
 
-    .. tab-item:: LFRic apps
+    .. tab-item:: LFRic Apps
 
-        LFRic apps tests use a BIG_DATA_DIR environment variable to provide a
+        LFRic Apps tests use a BIG_DATA_DIR environment variable to provide a
         platform based path prefix to provide direct access to data required for tests.
 
-        The master copy of this is held on XCS at `/common/lfric/data/`.
+        The master copy of this is held on XCS and a cronjob is used to synchronise
+        this across to other plaforms.
 
         .. dropdown:: cron sync
 
@@ -547,7 +548,7 @@ Static input data, such as initialisations and ancilliaries, are required by man
 
                 /home/d03/lfric/bigData/rsyncBigData.sh
 
-            This script synchronises the content of `/common/lfric/data/` from `XCS` to
+            This script synchronises the content of `$BIG_DATA_DIR` from `XCS` to
             `XCE/F` and `SPICE`,
             deleting all content not in `XCS` BIG_DATA from the remote locations and
             updating any changed content.
@@ -558,6 +559,16 @@ Static input data, such as initialisations and ancilliaries, are required by man
         .. code-block:: RST
 
             sudo -u lfric -i
+
+    .. tab-item:: UM and JULES
+
+        UM and JULES tests use a UMDIR environment variable to provide a platform
+        based path prefix to provide direct access to data required for tests.
+
+        At the Met Office master copies of this are held on SPICE and the XCE/F and this
+        should be manually synchronised using rsync to the XCS.
+
+        A copy of this data is stored in all these locations for each release
 
 As reviewer, you should work with the developer, prior to moving to the commit stage, to:
 
